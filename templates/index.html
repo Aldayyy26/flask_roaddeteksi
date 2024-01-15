@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jalan-Rusak</title>
+    <link rel="stylesheet" href="../static/src/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    
+</head>
+<body>
+    
+    <!-- Header -->
+    <header>
+        <!-- Jumbroton -->
+        <div class="jumbroton row justify align">
+            <div class="flex">
+                <img src="../static/img/jalan.png" alt="jalan">
+            </div>
+            <div class="flex double margin">
+                <h1>Sistem identifikasi kerusakan jalan menggunakan metode deep learning berbasis citra digital</h1>
+                <p>Hallo Masyarakat, Jalan-Rusak, yang mengacu pada pendekatan pengembangan solusi untuk masalah identifikasi kerusakan jalan bisa bermanfaat dalam konteks pengembangan teknologi untuk memantau atau mengidentifikasi kerusakan jalan. </p>
+                <button><a href="#content">Cek Jalan</a></button>
+            </div>
+        </div>
+        <!-- Batas Jumbroton -->
+    </header>
+    <!-- Batas Header -->
+
+    <!-- Main -->
+    <main id="content">
+        <!-- Card -->
+        <div class="card coloumn">
+            <h1 class="judul">Pilih Fitur</h1>
+            <!-- Row -->
+            <div class="row justify bottom">
+                <!-- Box -->
+                <div class="box flex fitur">
+                    <div class="coloumn justify align">
+                        <img src="../static/img/upload.png" alt="" class="image">
+                        <button id="btnUpload">Upload Gambar</button>
+                    </div>
+                </div>
+                <!-- Batas Box -->
+                <div class="box flex fitur">
+                    <div class="coloumn justify align">
+                        <img src="../static/img/feedback.png" alt="" class="image">
+                        <a href="{{url_for('sentiment_analisis')}}"><button>Feedback</button></a>
+                    </div>
+                </div>
+                <!-- Box -->
+                <div class="box flex fitur">
+                    <div class="coloumn justify align">
+                        <img src="../static/img/camera.png" alt="" class="image">
+                        <!-- <form  class="form-inline" action = "/detect" method = "get" enctype="multipart/form-data"> -->
+                            <button id="btnLive">Live Camera</button>
+                        <!-- </form> -->
+                    </div>
+                </div>
+                <!-- Batas Box -->
+                <div class="box flex fitur">
+                    <div class="coloumn justify align">
+                        <img src="../static/img/chatbot.png" alt="" class="image">
+                            <a href="{{url_for('home_chatbot')}}"><button>Chatbot</button></a>
+                        <!-- </form> -->
+                    </div>
+                </div>
+                
+                <!-- Box XL -->
+                <div class="boxXL triple hidden fiturBox" id="boxForm">
+                    <!-- Loader -->
+                    <div class="loader hidden">
+                        <div class="coloumn justify align">
+                            <img src="../static/img/Spin-1s-200px.gif" alt="loader" id="loader">
+                        </div>
+                    </div>
+                    <!-- Batas Loader -->
+
+                    <!-- Prediksi -->
+                    <div class="formPrediksi hidden">
+                        <div class="coloumn justify align">
+                            <h2>Masukan Gambar Untuk diPrediksi</h2>
+                            <form  class="coloumn justify align" action = "/predict" method = "post" enctype="multipart/form-data">
+                                <label class="custom-file-upload">
+                                    <div class="coloumn justify align">
+                                        <input type="file" name="file" class="file hidden" onchange="check(this);"/>
+                                        <img src="../static/img/folder.png" id="previewImg" alt="folder" class="folder">
+                                        <p>Masukan Gambar</p>
+                                    </div>
+                                </label>
+                                <button id="btnPrediksi">Prediksi</button>
+                            </form>
+                        </div>
+                        <form  class="form-inline" action = "/" method = "get" enctype="multipart/form-data">
+                            <button id="btnKembali">Kembali</button>
+                        </form>
+                    </div>
+                    <!-- Batas Prediksi -->
+                </div>
+                <!-- Batas Box XL -->
+            </div>
+            <!-- Batas Row -->
+        </div>
+        <!-- Batas Card -->
+
+        <!-- Card -->
+        <div class="card coloumn team">
+            <h1>Tim Penyusun</h1>
+            <!-- Row -->
+            <div class="row justify align">
+                <!-- Flex -->
+                <div class="flex">
+                    <div class="container">
+                        <div class="cardName">
+                            <div class="front">
+                                <div class="coloumn justify align">
+                                    <img src="../static/img/" alt="">
+                                    <h3>M Sarif Maulana</h3>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <div class="coloumn justify align">
+                                    <img src="../static/img/phb.png" alt="">
+                                    <h3>Politeknik Harapan Bersama</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex">
+                    <div class="container">
+                        <div class="cardName">
+                            <div class="front">
+                                <div class="coloumn justify align">
+                                    <img src="../static/img/" alt="">
+                                    <h3>Aldi Bhanu Azhar</h3>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <div class="coloumn justify align">
+                                    <img src="../static/img/phb.png" alt="">
+                                    <h3>Politeknik Harapan Bersama</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Batas Flex -->
+                <!-- Flex -->
+                <div class="flex margin">
+                    <div class="container">
+                        <div class="cardName">
+                            <div class="front">
+                                <div class="coloumn justify align">
+                                    <img src="../static/img/" alt="">
+                                    <h3>Echa Triansah Putri</h3>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <div class="coloumn justify align">
+                                    <img src="../static/img/phb.png" alt="">
+                                    <h3>Politeknik Harapan Bersama</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Batas Flex -->
+                <!-- Flex -->
+                <div class="flex margin">
+                    <div class="container">
+                        <div class="cardName">
+                            <div class="front">
+                                <div class="coloumn justify align">
+                                    <img src="../static/img/" alt="">
+                                    <h3>Vika Rosyida</h3>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <div class="coloumn justify align">
+                                    <img src="../static/img/phb.png" alt="">
+                                    <h3>Politeknik Harapan Bersama</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Batas Flex -->
+            </div>
+            <!-- Batas Row -->
+        </div>
+        <!-- Batas Card -->
+    </main>
+    <!-- Batas Main -->
+
+    <footer>
+        <p>&copy; Copyright 2023 Sistem identifikasi kerusakan jalan menggunakan metode deep learning berbasis citra digital</p>
+    </footer>
+
+
+    <script src="../static/src/app.js"></script>
+
+</body>
+</html>

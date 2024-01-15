@@ -1,0 +1,79 @@
+{"intents": [
+  {"tag": "salam",
+   "patterns": ["halo", "apa kabar", "adakah orang disini?","Hey","Hola", "Hello", "selamat pagi","selamat malam","selamat sore"],
+   "responses": ["Halo, berikan saya pertanyaan tentang kerusakan jalan"],
+   "context": [""]
+  },
+  {"tag": "jenis kerusakan jalan",
+   "patterns": ["apa saja jenis-jenis kerusakan jalan?", "jenis dari kerusakan jalan", "berapa jenis kerusakan jalan"],
+   "responses": ["menurut DPU (Dinas Pekerjaan Umum), kerusakan pada jalan raya diidentifikasikan sebagai berikut: 1. Kerusakan Jalan Aspal a.Pelepasan butir atau reveling b. retak atau cracking c. alur atau rutting 2. kerusakan Jalan Beton a. retak memanjang b. retak melintang c. gompal pada sambungan d. pecah sudut e. pumping "],
+   "context": [""]
+  },
+  {"tag": "Kerusakan Jalan Aspal",
+   "patterns": ["Apa saja kerusakan jalan aspal?", "macam-macam kerusakan jalan aspal", "keruskan jalan aspal"],
+   "responses": ["Kerusakan Jalan Aspal terdiri dari 1.Pelepasan Butir atau raveling, kerusakan ini terjadi akibat kandungan aspal yang rendah sehingga campuran dan pemadatan jalan tidak sempurna dan mengakibatkan terlepasnya butir agregat pada permukaan jalan aspal, 2. Retak atau cracking,retak ini juga dibagi lagi menjadi 5 yaitu retak memanjang (longitudinal cracking), retak melintang (transverse cracking), retak blok (block cracking), retak tepi (edge cracking), dan retak buaya (alligator cracking).Secara umum, merupakan kerusakan yang berbentuk retakan, yang membedakan adalah bentuk retakannya, letak retakkannya, dan juga penyebab terjadinya retakan. 3. Alur atau rutting,merupakan kerusakan berupa penurunan memanjang pada jalur jejak roda kiri (JRKI) dan kanan (JKRA) akibat deformasi lapis perkerasan permanen yang disebabkan oleh pergerakan lateral bahan perkerasan akibat beban kendaraan."],
+   "context": [""]
+  },
+  {"tag": "Kerusakan Jalan Beton", 
+   "patterns": ["Apa saja kerusakan jalan beton?", "macam-macam kerusakan jalan beton", "keruskan jalan beton"],
+   "responses": ["Kerusakan jalan beton terdiri dari 1. Retak memanjang (longitudinal crack), retak yang terjadi umumnya di sekitar daerah tengah perkerasan yang sejajar atau searah dengan sumbu jalannya. 2. Retak melintang (transversal crack), retak yang terjadi pada umumnya tegak lurus dengan sumbu jalannya, atau terjadi pada arah lebar jalan. 3. Gompal pada sambungan (joint spalling), kerusakan tepi slab beton yang terjadi pada bagian sambungan antara perkerasan. 4. Pecah sudut (corner breaks), kerusakan yang terjadi di sudut slab beton yang memotong sambungan pada jarak tertentu. 5. Pumping, terjadinya pergerakan atau terangkatnya material di bawah slab beton akibat adanya tekanan air melalui sambungan atau retakan."],
+   "context": [""]
+  },
+  {"tag": "Faktor Kerusakan Jalan",
+   "patterns": ["faktor-faktor apa saja yang menyebabkan kerusakan jalan", "faktor penyebab kerusakan jalan ", "penyebab kerusakan jalan", "apa penyebab kerusakan jalan"],
+   "responses": ["Berikut faktor-faktor penyebab kerusakan jalan: 1. Meningkatnya beban volume lalu lintas. 2. Sistem drainase yang buruk. 3. Kondisi tanah yang tidak stabil. 4. kurangnya perawatan atau pemeliharaan."],
+   "context": [""]
+  },
+  {"tag": "tipe jalan",
+   "patterns": ["apa saja tipe kerusakan jalan", "tipe-tipe kerusakan jalan"],
+   "responses": ["Berikut adalah tipe dari kerusakan jalan yaitu Tipe jalan rusak kecil, tipe jalan rusak sedang, tipe jalan rusak parah, tipe jalan berlubang"],
+   "context": [""]
+  },
+  {"tag": "rusak kecil",
+   "patterns": [ "apa itu jalan rusak kecil", "jalan rusak kecil", "jalan rusak kecil adalah"],
+   "responses": ["Jalan rusak kecil yaitu jalan yang memiliki tingkat kerusakan low atau kerusakan yang halus memanjang satu dengan yang lain dalam kondisi ini jalan tidak bergelombang atau gompal "],
+   "context": [""]
+  },
+  {"tag": "rusak sedang",
+   "patterns": ["apa itu jalan rusak sedang", "jalan rusak sedang", "pengertian jalan rusak sedang", "jalan rusak sedang adalah"],
+   "responses": ["Jalan rusak dengan pola retak yang terus berkembang atau cekung ke dalam merupakan kategori dari jalan rusak sedang. Ukuran lubang dan jaringan pola kedalaman lubang yang diikuti gompal ringan"],
+   "context": [""]
+  },
+  {"tag": "rusak parah",
+  "patterns": ["apa itu jalan rusak parah", "jalan rusak parah", "pengertian jalan rusak parah", "jalan rusak parah adalah" ],
+  "responses": ["Jalan rusak parah yaitu jalan yang jaringan dan pola retaknya sudah berlanjut, sehingga lubang-lubang di jalan dapat ditehui dengan mudah. Jalan rusak parah ini  sangat membahayakan bagi pengendara, karena dapat menyebabkan kecelakaan"],
+  "context": [""]
+  },
+  {"tag": "menggunakan aplikasi",
+  "patterns": ["bagaimana cara menggunakan aplikasi ini", "cara menggunakan aplikasi deketeksi jalan rusak" ],
+  "responses": ["Cara menggunakan aplikasi ini sangatlah mudah anda bisa membuka fitur deteksi kemudian anda bisa upload gambar jalan yang rusak atau menggunakan fitur live camera untuk mendeteksi akurasi kerusakan jalannya"],
+  "context": [""]
+ },
+  {"tag": "penanganan ditangani menangani perbaikan rusak kecil",
+   "patterns": ["bagaimana cara menangani jalan rusak kecil", "kapan pemerintah akan menangani kerusakan jalan kecil"],
+   "responses": ["Untuk kerusakan jalan kecil 75% belum peru untuk dilakukan perbaikan jalan. Cara menangani atau mengatasinya yaitu bisa dengan menutupi permukaan jalan dengan lapisan tambahan(Overlay)"],
+   "context": [""]
+  },
+  {"tag": "penanganan ditangani menangani perbaikan rusak kecil",
+   "patterns": ["bagaimana cara menangani jalan rusak kecil", "kapan pemerintah akan menangani kerusakan jalan kecil"],
+   "responses": ["Untuk kerusakan jalan kecil 75% belum peru untuk dilakukan perbaikan jalan. Cara menangani atau mengatasinya yaitu bisa dengan menutupi permukaan jalan dengan lapisan tambahan(Overlay)"],
+   "context": [""]
+  },
+  {"tag": "penanganan ditangani menangani perbaikan rusak sedang",
+   "patterns": ["bagaimana cara menangani jalan rusak sedang", "kapan pemerintah akan menangani kerusakan jalan dengan tingkat sedang"],
+   "responses": ["Untuk kerusakan jalan dengan tingkat sedang 75% akan dilakukan perbaikan dan penambahan parsial. Cara menangani atau mengatasinya yaitu dengan penambahan lapisan untuk menutupi lubang lubang atau dilakukan rekontruksi"],
+   "context": [""]
+  },
+  {"tag": "penanganan ditangani menangani perbaikan rusak parah",
+  "patterns": ["bagaimana cara menangani jalan rusak parah", "kapan pemerintah akan menangani kerusakan jalan dengan tingkat kerusakan parah"],
+  "responses": ["Untuk kerusakan jalan dengan tingkat parah atau high 95% akan dilakukan perbaikan secepat mungkin bisa dengan penambahan parsial atau jalan tersebut di aspal."],
+  "context": [""]
+ },
+  {"tag": "terimakasih",
+   "patterns": ["terimakasih ya", "maaci", "makasih", "terimakasih", "terimakasi" ],
+   "responses": ["Terimaksih Kembali:)"],
+   "context": [""]
+  }
+  
+]
+}

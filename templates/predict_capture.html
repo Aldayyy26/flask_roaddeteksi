@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jalan-Rusak</title>
+    <link rel="stylesheet" href="../static/src/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <header>
+        <div class="jumbroton row justify align">
+            <div class="flex">
+                <img src="../static/img/jalan.png" alt="Jalan">
+            </div>
+            <div class="flex double margin">
+                <h1>Sistem identifikasi kerusakan jalan menggunakan metode deep learning berbasis citra digital</h1>
+                <p>Hallo Masyarakat, Jalan-Rusak, yang mengacu pada pendekatan pengembangan solusi untuk masalah identifikasi kerusakan jalan bisa bermanfaat dalam konteks pengembangan teknologi untuk memantau atau mengidentifikasi kerusakan jalan.</p>
+                <button><a href="#content">Cek Jalan</a></button>
+            </div>
+        </div>
+    </header>
+
+    <main id="content">
+        <!-- Card -->
+        <div class="card coloumn">
+            <!-- Row -->
+            <div class="row justify">
+                <!-- Box XL -->
+                <div class="boxXL triple visible fitur" id="boxForm">
+                    <!-- Loader -->
+                    <div class="loader hidden">
+                        <div class="coloumn justify align">
+                            <img src="../static/img/Spin-1s-200px.gif" alt="loader" id="loader">
+                        </div>
+                    </div>
+                    <!-- Batas Loader -->
+                    <!-- Prediksi -->
+                    <div class="formPrediksi">
+                        <!-- Coloumn -->
+                        <div class="column justify align" style="padding-bottom: 90px;">
+                            <!-- Hasil Upload -->
+                            <div class="p-3" >
+                                <!-- Row -->
+                                <div class="row justify align" >
+                                    <div class="flex">
+                                        <img src="{{ url_for('static', filename='/uploads/' + sh_img )}}" alt="" width="380px">
+                                    </div>
+                                    <div class="triple margin">
+                                        <h3>Hasil</h3>
+                                        <h4>Hasil Kondisi : <span class="pred">{{road}}</span></h4>
+                                        {%if road == "jalan retak" or road == "rusak_kecil"%}
+                                        <div class="low">
+                                            <h4>1. Jalan Rusak Kecil "LOW"</h4>
+                                <p>Jalan rusak kecil merupakan tipe tingkat kerusakan Low</p>
+                                <p><span class="bold">Identifikasi Kerusakan kecil</span></p>
+                                <ol>
+                                    <li>-- Retak halus memanjang sejajar satu dengan yang lain.</li>
+                                    <li>--Retak yang tidak mengalami gelombang ataupun gompal</li>
+                                </ol>
+                                
+                                <p><span class="bold">Tingkat Kepentingan Perbaikan</span></p>
+                                <ol>
+                                    <li>75% Belom perlu untuk perbaikan jalan </li>
+                                    <li>Cara Mengatasi : >> Penutupan permukaan lapisan tambalan "Overlay"</li>
+                                </ol>
+                                        </div>
+                                        {%elif road == "rusak_sedang" %}
+                                        <div class="medium" >
+                                        <h4>2. Jalan Rusak Sedang "MEDIUM"</h4>
+                                <p><span class="bold">Identifikasi Kerusakan Sedang "MEDIUM"</span></p>
+                                <ol>
+                                    <li>Jalan rusak dengan pola retak yang terus berkembang ke dalam merupakan masuk kategori rusak sedang</li>
+                                    <li>Ukuran lubang dan jaringan pola kedalaman lubang yang di ikuti gompal ringan</li>
+                                    <li>Jalan rusak kecil dan sedang termasuk dalam kategori berikut</li>
+                                </ol>
+                                <p><span class="bold">Tingkat Kepentingan Perbaikan</span></p>
+                                <ol>
+                                    <li>75% Akan dilakukan perbaikan dan penambahan parsial</li>
+                                    <li>Penambalan akan dilakukan seluruh kedalaman termasuk lapisan tambahan"Overlay" rekontruksi</li>
+                                </ol>
+                            </div>
+                                {%elif road == "rusak_parah" %}
+                                <div class="high">
+                                <h4>3. Jalan Rusak Parah "HIGH"</h4>
+                                <p>Jalan yang mengalami kerusakan cukup parah dan membahayakan pengendara.</p>
+                                <p><span class="bold">Identifikasi Kerusakan Parah "HIGH"</span></p>
+                                <ol>
+                                    <li>Jalan yang jaringan dan pola retaknya sudah berlanjut,sehingga pecah pecah dapat diketahui dengan mudah</li>
+                                    <li>Jalan yang penuh dengan lubang dalam yang sangat membahayakan pengendara dalam siang hari ataupun malam hari</li>
+                                    <li>Mengalami pecahan rocking akibat lalu lintas</li>
+                                </ol>
+
+                                <p><span class="bold">Tingkat Kepentingan Perbaikan</span></p>
+                                <ol>
+                                    <li>95% akan dilakukan perbaikan secepat mungkin dalam penambalan maupun perbaikan jalan tersebut</li>
+                                    <li>Kerusakan Kegemukan merupakan ciri jalan yang tingkat kerusakanya "HIGHT"</li>
+                                    <li>Berlumbur dan bergelombang kedalaman atau ketinggian lebih dari 3 cm itu termasuk juga tingkat kerusakan parah</li>
+                                </ol>
+                            </div>
+
+                                        {%endif %}
+                                        
+                                        <h4>Tingkat Akurat kerusakan : <span class="pred">{{prob}} %</span></h4>
+                                        <button id="btnPenanganan">Lihat Detail</button>
+                                    </div>
+                                </div>
+                                <!-- Batas Row -->
+                            </div>
+                            <!-- Batas Hasil Upload -->
+                        </div>
+                        <!-- Batas Coloumn -->
+                        <!-- form -->
+                        <form action = "/" method = "get" enctype="multipart/form-data">
+                            <button id="btnKembali">Kembali</button>
+                        </form>
+                        <!-- Batas Form -->
+                    </div>
+                    <!-- Batas Prediksi -->
+                    <!-- Penanganan -->
+                    <div class="formPenanganan hidden">
+                        <div class="coloumn justify align">
+                            <h2>Informasi Tentang Penjelasan Penanganan Jalan Rusak </h2>
+                            <div class="cardPenanganan coloumn">
+                                <div class="coloumn align">
+                                    <img src="../static/img/retak.jpg" alt="">
+                                </div>
+                                <h4>1. Jalan Rusak Kecil "LOW"</h4>
+                                <p>Jalan rusak kecil merupakan tipe tingkat kerusakan Low</p>
+                                <p><span class="bold">Identifikasi Kerusakan kecil</span></p>
+                                <ol>
+                                    <li>-- Retak halus memanjang sejajar satu dengan yang lain.</li>
+                                    <li>--Retak yang tidak mengalami gelombang ataupun gompal</li>
+                                </ol>
+                                
+                                <p><span class="bold">Tingkat Kepentingan Perbaikan</span></p>
+                                <ol>
+                                    <li>75% Belom perlu untuk perbaikan jalan </li>
+                                    <li>Cara Mengatasi : >> Penutupan permukaan lapisan tambalan "Overlay"</li>
+                                </ol>
+
+                                <p>Sumber Informasi : DINAS PEKERJAAN UMUM DAN PENATAAN RUANG</p>
+                            </div>
+
+                            <div class="cardPenanganan coloumn">
+                                <div class="coloumn align">
+                                    <img src="../static/img/kecil.jpg" alt="">
+                                </div>
+                                <h4>2. Jalan Rusak Sedang "MEDIUM"</h4>
+                                <p><span class="bold">Identifikasi Kerusakan Sedang "MEDIUM"</span></p>
+                                <ol>
+                                    <li>Jalan rusak dengan pola retak yang terus berkembang ke dalam merupakan masuk kategori rusak sedang</li>
+                                    <li>Ukuran lubang dan jaringan pola kedalaman lubang yang di ikuti gompal ringan</li>
+                                    <li>Jalan rusak kecil dan sedang termasuk dalam kategori berikut</li>
+                                </ol>
+                                <p><span class="bold">Tingkat Kepentingan Perbaikan</span></p>
+                                <ol>
+                                    <li>75% Akan dilakukan perbaikan dan penambahan parsial</li>
+                                    <li>Penambalan akan dilakukan seluruh kedalaman termasuk lapisan tambahan"Overlay" rekontruksi</li>
+                                </ol>
+
+                                <p>Sumber Informasi : DINAS PEKERJAAN UMUM DAN PENATAAN RUANG</p>
+                            </div>
+
+                            <div class="cardPenanganan coloumn">
+                                <div class="coloumn align">
+                                    <img src="../static/img/parah.jpg" alt="">
+                                </div>
+                                <h4>3. Jalan Rusak Parah "HIGH"</h4>
+                                <p>Jalan yang mengalami kerusakan cukup parah dan membahayakan pengendara.</p>
+                                <p><span class="bold">Identifikasi Kerusakan Parah "HIGH"</span></p>
+                                <ol>
+                                    <li>Jalan yang jaringan dan pola retaknya sudah berlanjut,sehingga pecah pecah dapat diketahui dengan mudah</li>
+                                    <li>Jalan yang penuh dengan lubang dalam yang sangat membahayakan pengendara dalam siang hari ataupun malam hari</li>
+                                    <li>Mengalami pecahan rocking akibat lalu lintas</li>
+                                </ol>
+
+                                <p><span class="bold">Tingkat Kepentingan Perbaikan</span></p>
+                                <ol>
+                                    <li>95% akan dilakukan perbaikan secepat mungkin dalam penambalan maupun perbaikan jalan tersebut</li>
+                                    <li>Kerusakan Kegemukan merupakan ciri jalan yang tingkat kerusakanya "HIGHT"</li>
+                                    <li>Berlumbur dan bergelombang kedalaman atau ketinggian lebih dari 3 cm itu termasuk juga tingkat kerusakan parah</li>
+                                </ol>
+
+                                <p>Sumber Informasi : DINAS PEKERJAAN UMUM DAN PENATAAN RUANG</p>
+                            </div>
+
+                        </div>
+                        <form action = "/" method = "get" enctype="multipart/form-data">
+                            <button id="btnKembali">Kembali</button>
+                        </form>
+                    </div>
+                    <!-- Batas Peanganan -->
+                </div>
+                <!-- Batas Box XL -->
+            </div>
+            <!-- Batas Row -->
+        </div>
+        <!-- Batas Card -->
+    </main>
+
+
+    <footer>
+        <p>&copy; Copyright 2023 Sistem identifikasi kerusakan jalan menggunakan metode deep learning berbasis citra digital</p>
+    </footer>
+
+    <script src="../static/src/app.js"></script>
+    <script src="../static/src/predict.js"></script>
+
+</body>
+</html>
